@@ -1,0 +1,15 @@
+{
+  "name": "bot-ws-plugin-openai",
+  "version": "1.0.3",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "files": [
+    "./src/*"
+  ],
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
