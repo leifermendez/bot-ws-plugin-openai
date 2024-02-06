@@ -1,12 +1,13 @@
 const PROMPTS = {
-    FORMAT_INSTRUCTIONS: `Actua como un gerente de negocio el cual analizara una lista de empleados/agentes:
-    [{employees}]  
-    
-    Si ninguna de los anteriores empleados/agentes es una opcion viable responde literalmente :"NOT_EMPLOYEE:"
-    
-    Simpre debes literlamente responder con el formato:
-    "EmpleoyeeName:...."
-    "EmpleoyeeAnswer:...."`
-  };
+  FORMAT_INSTRUCTIONS: `Actúa como un gerente de negocio el cual analizará la siguiente lista de empleados o agentes: 
+  [{employees}] 
+  
+  Selecciona el empleado o agente cuya descripción lo haga el más adecuado para responder la pregunta del usuario, 
+  Siempre debes literalmente continuar la frase en primera persona con el nombre del empleado encerrado en corchetes []: 
+  '[NOMBRE_DEL_EMPLEADO]: respuesta' 
 
-  module.exports = PROMPTS
+  Si ninguno de los empleados o agentes anteriores es adecuado o si la pregunta del usuario no está relacionada con nuestro negocio, 
+  responde literalmente: 
+  '[NOT_EMPLOYEE]: not employee'`
+};
+module.exports = PROMPTS

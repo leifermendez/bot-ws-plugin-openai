@@ -10,23 +10,31 @@ const cleanText = (inputText) => {
  * @returns
  */
 const determineAgent = (text) => {
+  try {
   text = text.replaceAll("\n", " ");
+  console.log('------------>')
+  const match = /\[(.*?)\]:\s*(.*?)(?=\s*\[|$)/.exec(text);
+  
+  if (match.length < 3) {
+    throw new Error(`Could not parse LLM output: ${text}`);
+  }
+  const employee = match[1].trim().replaceAll(":", "").replaceAll('[',"").replaceAll(']',"")
+  const answer = match[2].trim().replaceAll("EmployeeAnswer", "").replaceAll(':',"")
 
-  const match = /^\w+:(.)/.exec(text);
-  const employee = match[0].trim().replaceAll(":", "");
-
-  if (!match) {
+  if (!answer) {
     throw new Error(`Could not parse LLM output: ${text}`);
   }
 
-  try {
+
     return {
       tool: employee,
+      answer,
       log: cleanText(text),
     };
   } catch (e) {
     return {
       tool: null,
+      answer:null,
       error: e.message,
     };
   }

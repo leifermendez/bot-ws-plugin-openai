@@ -56,10 +56,14 @@ class EmployeesClass extends OpenAiClass {
       const bestChoise = determineAgent(
         llmDetermineEmployee.choices[0].message.content
       );
+
+      console.log('_____',bestChoise)
+
       const employee = this.getAgent(bestChoise.tool);
-      return employee;
+      return {employee, answer:bestChoise.answer};
 
     } catch (err) {
+      console.log({err})
       return `ERROR_DETERMINANDO_EMPELADO`;
     }
   };
